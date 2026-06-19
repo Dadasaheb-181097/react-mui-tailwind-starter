@@ -1,0 +1,401 @@
+/** Semantic tokens per appearance mode — synced to CSS vars + MUI theme */
+
+export function hexToRgb(hex) {
+  const h = hex.replace('#', '')
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
+  const n = Number.parseInt(full, 16)
+  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 }
+}
+
+export function rgba(rgb, alpha) {
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`
+}
+
+function makeLight(primary, primaryDark, primaryTintLight, opts = {}) {
+  const rgb = hexToRgb(primary)
+  const rb = opts.roleBars || {}
+  return {
+    primary,
+    primaryDark,
+    primaryTintLight,
+    primarySoft: rgba(rgb, 0.1),
+    primaryBorder: rgba(rgb, 0.35),
+    bgPage: '#f6f8fc',
+    cardBg: '#ffffff',
+    cardBorder: '#e8ecf4',
+    text: '#012970',
+    textMuted: '#64748b',
+    textCaption: '#94a3b8',
+    divider: '#e8ecf4',
+    sidebarActiveBg: rgba(rgb, 0.09),
+    sidebarActiveBorder: primary,
+    navbarBg: '#ffffff',
+    navbarText: '#012970',
+    navbarTextSecondary: '#334155',
+    navbarBorder: 'rgba(1, 41, 112, 0.08)',
+    navbarDivider: 'rgba(1, 41, 112, 0.12)',
+    navbarIconBorder: 'rgba(1, 41, 112, 0.18)',
+    navbarIconBg: '#ffffff',
+    navbarIconShadow: '0 1px 2px rgba(1, 41, 112, 0.06)',
+    navbarIconShadowHover: '0 1px 3px rgba(1, 41, 112, 0.1)',
+    navbarSearchBg: '#f5f7fb',
+    navbarSearchBgHover: '#eef2f8',
+    navbarSearchFocusBg: '#ffffff',
+    sidebarFooterBg: '#fafbfd',
+    sidebarIconMuted: '#a4a8bc',
+    sidebarSubtleBorder: '#eef2f8',
+    sidebarSectionMuted: '#64748b',
+    sidebarProfileHoverBg: '#e8ecf4',
+    sidebarProfileHoverText: '#475569',
+    tableHeaderBg: '#fafbff',
+    tableHeaderBorder: '#dfe4f0',
+    tableRowHoverBg: '#eef2f8',
+    tableRowHoverText: '#475569',
+    tableRowHoverTint: rgba(rgb, 0.045),
+    tableAvatarBg: '#eef2f8',
+    tableAvatarText: '#475569',
+    roleAdmin: '#b91c1c',
+    roleAdminBg: '#fef2f2',
+    roleManager: '#c2410c',
+    roleManagerBg: '#fff7ed',
+    roleUser: '#1d4ed8',
+    roleUserBg: '#eff6ff',
+    roleBarAdmin: rb.admin ?? '#ec4899',
+    roleBarManager: rb.manager ?? '#eab308',
+    roleBarUser: rb.user ?? '#38bdf8',
+    statTotalG1: rgba(rgb, 0.14),
+    statTotalG2: rgba(rgb, 0.06),
+    statTotalBorder: rgba(rgb, 0.18),
+    statActiveValue: '#15803d',
+    statPendingValue: '#b45309',
+    statInactiveValue: '#dc2626',
+    statActiveG1: 'rgba(34, 197, 94, 0.18)',
+    statActiveG2: 'rgba(34, 197, 94, 0.07)',
+    statActiveBorder: 'rgba(34, 197, 94, 0.24)',
+    statPendingG1: 'rgba(234, 179, 8, 0.22)',
+    statPendingG2: 'rgba(234, 179, 8, 0.08)',
+    statPendingBorder: 'rgba(234, 179, 8, 0.3)',
+    statInactiveG1: 'rgba(248, 113, 113, 0.16)',
+    statInactiveG2: 'rgba(248, 113, 113, 0.06)',
+    statInactiveBorder: 'rgba(248, 113, 113, 0.22)',
+    scrollbarThumb: '#c5cce3',
+    scrollbarThumbHover: '#aab4d4',
+    cardShadow: '0 0 20px rgba(1, 41, 112, 0.08)',
+    cardShadowHover: '0 8px 28px rgba(1, 41, 112, 0.12)',
+    logoShadow: `0 2px 8px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.28)`,
+    avatarGradient: `linear-gradient(135deg, ${primary} 0%, ${primaryDark} 100%)`,
+    navbarShadow:
+      'rgba(255, 255, 255, 0.92) 0px 1px 0px inset, rgba(1, 41, 112, 0.06) 0px 4px 28px, rgba(1, 41, 112, 0.035) 0px 2px 8px',
+    directoryTabsBg: '#fafbff',
+    badgeOutline: '#ffffff',
+    roleTrackBg: 'rgba(148, 163, 184, 0.18)',
+    mutedDot: '#94a3b8',
+    ...opts.extraLight,
+  }
+}
+
+function makeDark(primary, primaryDark, primaryTintLight, opts = {}) {
+  const rgb = hexToRgb(primary)
+  const rb = opts.roleBars || {}
+  return {
+    primary,
+    primaryDark,
+    primaryTintLight,
+    primarySoft: rgba(rgb, 0.18),
+    primaryBorder: rgba(rgb, 0.45),
+    bgPage: '#0b0f14',
+    cardBg: '#121820',
+    cardBorder: '#243044',
+    text: '#e8eef8',
+    textMuted: '#94a3b8',
+    textCaption: '#7d8ea3',
+    divider: '#243044',
+    sidebarActiveBg: rgba(rgb, 0.16),
+    sidebarActiveBorder: primary,
+    navbarBg: '#121820',
+    navbarText: '#e8eef8',
+    navbarTextSecondary: '#cbd5e1',
+    navbarBorder: 'rgba(148, 163, 184, 0.12)',
+    navbarDivider: 'rgba(148, 163, 184, 0.32)',
+    navbarIconBorder: 'rgba(148, 163, 184, 0.35)',
+    navbarIconBg: '#1a2230',
+    navbarIconShadow: '0 1px 2px rgba(0, 0, 0, 0.28)',
+    navbarIconShadowHover: '0 1px 3px rgba(0, 0, 0, 0.4)',
+    navbarSearchBg: '#1a2230',
+    navbarSearchBgHover: '#1e293b',
+    navbarSearchFocusBg: '#0f172a',
+    sidebarFooterBg: '#101824',
+    sidebarIconMuted: '#8896ab',
+    sidebarSubtleBorder: '#1e293b',
+    sidebarSectionMuted: '#94a3b8',
+    sidebarProfileHoverBg: '#243044',
+    sidebarProfileHoverText: '#e2e8f0',
+    tableHeaderBg: '#102445',
+    tableHeaderBorder: '#243044',
+    tableRowHoverBg: '#1a2535',
+    tableRowHoverText: '#e2e8f0',
+    tableRowHoverTint: rgba(rgb, 0.12),
+    tableAvatarBg: '#1e293b',
+    tableAvatarText: '#cbd5e1',
+    roleAdmin: '#fca5a5',
+    roleAdminBg: 'rgba(185, 28, 28, 0.16)',
+    roleManager: '#fdba74',
+    roleManagerBg: 'rgba(234, 88, 12, 0.14)',
+    roleUser: '#93c5fd',
+    roleUserBg: 'rgba(37, 99, 235, 0.14)',
+    roleBarAdmin: rb.adminDark ?? rb.admin ?? '#f472b6',
+    roleBarManager: rb.managerDark ?? rb.manager ?? '#fbbf24',
+    roleBarUser: rb.userDark ?? rb.user ?? '#38bdf8',
+    statTotalG1: rgba(rgb, 0.22),
+    statTotalG2: rgba(rgb, 0.08),
+    statTotalBorder: rgba(rgb, 0.35),
+    statActiveValue: '#4ade80',
+    statPendingValue: '#fbbf24',
+    statInactiveValue: '#f87171',
+    statActiveG1: 'rgba(34, 197, 94, 0.28)',
+    statActiveG2: 'rgba(34, 197, 94, 0.1)',
+    statActiveBorder: 'rgba(34, 197, 94, 0.38)',
+    statPendingG1: 'rgba(234, 179, 8, 0.28)',
+    statPendingG2: 'rgba(234, 179, 8, 0.1)',
+    statPendingBorder: 'rgba(234, 179, 8, 0.38)',
+    statInactiveG1: 'rgba(248, 113, 113, 0.22)',
+    statInactiveG2: 'rgba(248, 113, 113, 0.08)',
+    statInactiveBorder: 'rgba(248, 113, 113, 0.32)',
+    scrollbarThumb: '#334155',
+    scrollbarThumbHover: '#475569',
+    cardShadow: '0 0 28px rgba(0, 0, 0, 0.45)',
+    cardShadowHover: '0 12px 40px rgba(0, 0, 0, 0.55)',
+    logoShadow: `0 2px 12px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.35)`,
+    avatarGradient: `linear-gradient(135deg, ${primary} 0%, ${primaryDark} 100%)`,
+    navbarShadow: '0 1px 6px rgba(0, 0, 0, 0.35)',
+    directoryTabsBg: '#161f2c',
+    badgeOutline: '#121820',
+    roleTrackBg: 'rgba(148, 163, 184, 0.22)',
+    mutedDot: '#64748b',
+    ...opts.extraDark,
+  }
+}
+
+function pair(lightPrimary, lightDark, tintLight, darkPrimary, darkDark, tintDark, roleBars) {
+  return {
+    light: makeLight(lightPrimary, lightDark, tintLight, { roleBars }),
+    dark: makeDark(darkPrimary, darkDark, tintDark, { roleBars }),
+  }
+}
+
+/** @type {Record<string, { id: string, label: string, tagline: string, swatch: string, light: object, dark: object }>} */
+export const ADMIN_PRESETS = {
+  ocean: {
+    id: 'ocean',
+    label: 'Ocean Blue',
+    tagline: 'Classic NiceAdmin',
+    swatch: '#2b50ed',
+    ...pair('#2b50ed', '#1f3dbd', '#e8ecfe', '#8ba3ff', '#6d8cff', 'rgba(139,163,255,0.2)', {
+      admin: '#ec4899',
+      manager: '#eab308',
+      user: '#38bdf8',
+      adminDark: '#f472b6',
+      managerDark: '#fde047',
+      userDark: '#7dd3fc',
+    }),
+  },
+  indigo: {
+    id: 'indigo',
+    label: 'Indigo Pulse',
+    tagline: 'Deep studio violet-blue',
+    swatch: '#4f46e5',
+    ...pair('#4f46e5', '#4338ca', '#e8eafe', '#a5b4fc', '#818cf8', 'rgba(165,180,252,0.2)', {
+      admin: '#db2777',
+      manager: '#ea580c',
+      user: '#06b6d4',
+      adminDark: '#fb7185',
+      managerDark: '#fdba74',
+      userDark: '#22d3ee',
+    }),
+  },
+  teal: {
+    id: 'teal',
+    label: 'Teal Breeze',
+    tagline: 'Fresh operational teal',
+    swatch: '#0d9488',
+    ...pair('#0d9488', '#0f766e', '#ccfbf7', '#2dd4bf', '#14b8a6', 'rgba(45,212,191,0.18)', {
+      admin: '#db2777',
+      manager: '#ca8a04',
+      user: '#0284c7',
+      adminDark: '#f472b6',
+      managerDark: '#facc15',
+      userDark: '#38bdf8',
+    }),
+  },
+  violet: {
+    id: 'violet',
+    label: 'Violet Aura',
+    tagline: 'Creative magenta violet',
+    swatch: '#7c3aed',
+    ...pair('#7c3aed', '#6d28d9', '#ede9fe', '#c4b5fd', '#a78bfa', 'rgba(196,181,253,0.22)', {
+      admin: '#e11d48',
+      manager: '#ea580c',
+      user: '#38bdf8',
+      adminDark: '#fb7185',
+      managerDark: '#fb923c',
+      userDark: '#67e8f9',
+    }),
+  },
+  rose: {
+    id: 'rose',
+    label: 'Rose Quartz',
+    tagline: 'Warm rose accent',
+    swatch: '#db2777',
+    ...pair('#db2777', '#be185d', '#fce7f3', '#fb7185', '#f472b6', 'rgba(251,113,133,0.2)', {
+      admin: '#9333ea',
+      manager: '#ea580c',
+      user: '#0891b2',
+      adminDark: '#c084fc',
+      managerDark: '#fdba74',
+      userDark: '#22d3ee',
+    }),
+  },
+  amber: {
+    id: 'amber',
+    label: 'Amber Glow',
+    tagline: 'Warm gold highlights',
+    swatch: '#d97706',
+    ...pair('#d97706', '#b45309', '#fef3c7', '#fbbf24', '#f59e0b', 'rgba(251,191,36,0.22)', {
+      admin: '#dc2626',
+      manager: '#15803d',
+      user: '#0284c7',
+      adminDark: '#f87171',
+      managerDark: '#4ade80',
+      userDark: '#38bdf8',
+    }),
+  },
+  slate: {
+    id: 'slate',
+    label: 'Slate Noir',
+    tagline: 'Muted graphite luxe',
+    swatch: '#475569',
+    ...pair('#475569', '#334155', '#e8eef4', '#94a3b8', '#64748b', 'rgba(148,163,184,0.18)', {
+      admin: '#e11d48',
+      manager: '#ca8a04',
+      user: '#0ea5e9',
+      adminDark: '#fb7185',
+      managerDark: '#fcd34d',
+      userDark: '#38bdf8',
+    }),
+  },
+  emerald: {
+    id: 'emerald',
+    label: 'Emerald Grove',
+    tagline: 'Natural green trust',
+    swatch: '#059669',
+    ...pair('#059669', '#047857', '#d1fae5', '#34d399', '#10b981', 'rgba(52,211,153,0.18)', {
+      admin: '#db2777',
+      manager: '#ea580c',
+      user: '#6366f1',
+      adminDark: '#f472b6',
+      managerDark: '#fdba74',
+      userDark: '#a5b4fc',
+    }),
+  },
+}
+
+export const ADMIN_PRESET_ORDER = ['ocean', 'indigo', 'teal', 'violet', 'rose', 'amber', 'slate', 'emerald']
+
+export function getPresetList() {
+  return ADMIN_PRESET_ORDER.map((id) => ADMIN_PRESETS[id])
+}
+
+export function getTokens(presetId, mode) {
+  const preset = ADMIN_PRESETS[presetId] || ADMIN_PRESETS.ocean
+  return mode === 'dark' ? preset.dark : preset.light
+}
+
+/** Maps semantic tokens to CSS custom properties used across styles */
+export function tokensToCssVars(t) {
+  return {
+    '--color-primary': t.primary,
+    '--color-primary-dark': t.primaryDark,
+    '--color-primary-soft': t.primarySoft,
+    '--color-primary-border': t.primaryBorder,
+    '--color-bg-page': t.bgPage,
+    '--color-surface': t.cardBg,
+    '--color-border': t.cardBorder,
+    '--shadow-card': t.cardShadow,
+    '--shadow-card-hover': t.cardShadowHover,
+    '--color-text': t.text,
+    '--color-text-muted': t.textMuted,
+    '--color-text-caption': t.textCaption,
+    '--color-divider-soft': t.divider,
+    '--color-sidebar-active-bg': t.sidebarActiveBg,
+    '--color-sidebar-active-border': t.sidebarActiveBorder,
+    '--color-role-admin': t.roleAdmin,
+    '--color-role-admin-bg': t.roleAdminBg,
+    '--color-role-manager': t.roleManager,
+    '--color-role-manager-bg': t.roleManagerBg,
+    '--color-role-user': t.roleUser,
+    '--color-role-user-bg': t.roleUserBg,
+    '--color-role-bar-admin': t.roleBarAdmin,
+    '--color-role-bar-manager': t.roleBarManager,
+    '--color-role-bar-user': t.roleBarUser,
+    '--gradient-stat-total-g1': t.statTotalG1,
+    '--gradient-stat-total-g2': t.statTotalG2,
+    '--border-stat-total': t.statTotalBorder,
+    '--color-stat-active': t.statActiveValue,
+    '--color-stat-pending': t.statPendingValue,
+    '--color-stat-inactive': t.statInactiveValue,
+    '--gradient-stat-active-g1': t.statActiveG1,
+    '--gradient-stat-active-g2': t.statActiveG2,
+    '--border-stat-active': t.statActiveBorder,
+    '--gradient-stat-pending-g1': t.statPendingG1,
+    '--gradient-stat-pending-g2': t.statPendingG2,
+    '--border-stat-pending': t.statPendingBorder,
+    '--gradient-stat-inactive-g1': t.statInactiveG1,
+    '--gradient-stat-inactive-g2': t.statInactiveG2,
+    '--border-stat-inactive': t.statInactiveBorder,
+    '--color-navbar-bg': t.navbarBg,
+    '--color-navbar-text': t.navbarText,
+    '--color-navbar-text-secondary': t.navbarTextSecondary,
+    '--color-navbar-border': t.navbarBorder,
+    '--color-navbar-divider': t.navbarDivider,
+    '--color-navbar-icon-border': t.navbarIconBorder,
+    '--color-navbar-icon-bg': t.navbarIconBg,
+    '--shadow-navbar-icon': t.navbarIconShadow,
+    '--shadow-navbar-icon-hover': t.navbarIconShadowHover,
+    '--shadow-navbar': t.navbarShadow,
+    '--color-navbar-search-bg': t.navbarSearchBg,
+    '--color-navbar-search-bg-hover': t.navbarSearchBgHover,
+    '--color-navbar-search-focus-bg': t.navbarSearchFocusBg,
+    '--color-sidebar-footer-bg': t.sidebarFooterBg,
+    '--color-sidebar-icon-muted': t.sidebarIconMuted,
+    '--color-sidebar-subtle-border': t.sidebarSubtleBorder,
+    '--color-sidebar-section-muted': t.sidebarSectionMuted,
+    '--color-sidebar-profile-hover-bg': t.sidebarProfileHoverBg,
+    '--color-sidebar-profile-hover-text': t.sidebarProfileHoverText,
+    '--color-table-header-bg': t.tableHeaderBg,
+    '--color-table-header-border': t.tableHeaderBorder,
+    '--color-table-row-hover-bg': t.tableRowHoverBg,
+    '--color-table-row-hover-text': t.tableRowHoverText,
+    '--color-table-row-hover-tint': t.tableRowHoverTint,
+    '--color-table-avatar-bg': t.tableAvatarBg,
+    '--color-table-avatar-text': t.tableAvatarText,
+    '--color-scrollbar-thumb': t.scrollbarThumb,
+    '--color-scrollbar-thumb-hover': t.scrollbarThumbHover,
+    '--color-directory-tabs-bg': t.directoryTabsBg,
+    '--color-badge-outline': t.badgeOutline,
+    '--shadow-logo': t.logoShadow,
+    '--gradient-avatar': t.avatarGradient,
+    '--color-role-track-bg': t.roleTrackBg,
+    '--color-muted-dot': t.mutedDot,
+    '--shadow-avatar-ring': `0 0 0 2px ${t.cardBg}, 0 0 0 3px ${t.primaryBorder}, 0 4px 14px ${t.primarySoft}`,
+  }
+}
+
+export function applyTokensToDocument(tokens, presetId, mode) {
+  const root = document.documentElement
+  root.dataset.adminMode = mode
+  root.dataset.adminPreset = presetId
+  const vars = tokensToCssVars(tokens)
+  for (const [key, value] of Object.entries(vars)) {
+    root.style.setProperty(key, value)
+  }
+}

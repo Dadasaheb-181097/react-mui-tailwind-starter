@@ -1,0 +1,47 @@
+@import 'tailwindcss/theme' layer(theme);
+@import 'tailwindcss/utilities' layer(utilities);
+
+@import './variables.css';
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-soft: var(--color-primary-soft);
+  --color-primary-border: var(--color-primary-border);
+  --color-bg-page: var(--color-bg-page);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-caption: var(--color-text-caption);
+  --color-navbar-bg: var(--color-navbar-bg);
+  --color-navbar-text: var(--color-navbar-text);
+  --color-navbar-border: var(--color-navbar-border);
+  --color-sidebar-footer-bg: var(--color-sidebar-footer-bg);
+  --color-divider-soft: var(--color-divider-soft);
+  --color-navbar-search-bg: var(--color-navbar-search-bg);
+  --color-navbar-search-focus-bg: var(--color-navbar-search-focus-bg);
+  --spacing-1: var(--spacing-1);
+  --spacing-2: var(--spacing-2);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-7: var(--spacing-7);
+  --spacing-8: var(--spacing-8);
+  --spacing-10: var(--spacing-10);
+  --spacing-11: var(--spacing-11);
+  --spacing-12: var(--spacing-12);
+  --spacing-13: var(--spacing-13);
+  --height-navbar: var(--layout-navbar-height);
+  --spacing-navbar: var(--layout-navbar-height);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --shadow-navbar: var(--shadow-navbar);
+  --shadow-logo: var(--shadow-logo);
+  --shadow-weather: var(--shadow-weather);
+}
+
+@import './global.css';
+@import './app.css';

@@ -1,0 +1,32 @@
+/** Component taxonomy registry */
+export { COMPONENT_CATEGORIES, COMPONENT_CATEGORY_LIST } from './categories'
+
+/** Category barrels */
+export * as Ui from './ui'
+export * as Form from './form'
+export * as Table from './table'
+export * as Modal from './modal'
+export * as Layout from './layout'
+export * as Feedback from './feedback'
+export * as Auth from './auth'
+export * as Navigation from './navigation'
+export * as Dashboard from './dashboard'
+export * as Card from './card'
+export * as FileUpload from './file-upload'
+export * as SearchFilter from './search-filter'
+export * as Business from './business'
+
+/** Direct re-exports for tree-shake friendly imports */
+export * from './ui'
+export * from './form'
+export * from './table'
+export * from './modal'
+export * from './layout'
+export * from './feedback'
+export * from './auth'
+export * from './navigation'
+export * from './dashboard'
+export * from './card'
+export * from './file-upload'
+export * from './search-filter'
+export * from './business'

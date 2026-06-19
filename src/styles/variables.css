@@ -1,0 +1,195 @@
+/**
+ * Design tokens — semantic CSS custom properties.
+ * Color tokens marked "runtime" are overridden by AdminAppearanceProvider.
+ */
+
+:root {
+  /* ── Colors (runtime) ─────────────────────────────────────────────── */
+  --color-primary: #2b50ed;
+  --color-primary-dark: #1f3dbd;
+  --color-primary-soft: rgba(43, 80, 237, 0.1);
+  --color-primary-border: rgba(43, 80, 237, 0.35);
+
+  --color-text: #012970;
+  --color-text-muted: #64748b;
+  --color-text-caption: #94a3b8;
+  --color-white: #ffffff;
+
+  --color-bg-page: #f6f8fc;
+  --color-surface: #ffffff;
+  --color-border: #e8ecf4;
+  --color-divider-soft: #e8ecf4;
+
+  --color-success: #22c55e;
+  --color-muted-dot: #94a3b8;
+
+  --color-navbar-bg: #ffffff;
+  --color-navbar-text: #012970;
+  --color-navbar-text-secondary: #334155;
+  --color-navbar-border: rgba(1, 41, 112, 0.08);
+  --color-navbar-divider: rgba(1, 41, 112, 0.12);
+  --color-navbar-icon-border: rgba(1, 41, 112, 0.18);
+  --color-navbar-icon-bg: #ffffff;
+  --shadow-navbar-icon: 0 1px 2px rgba(1, 41, 112, 0.06);
+  --shadow-navbar-icon-hover: 0 1px 3px rgba(1, 41, 112, 0.1);
+  --color-navbar-search-bg: #f5f7fb;
+  --color-navbar-search-bg-hover: #eef2f8;
+  --color-navbar-search-focus-bg: #ffffff;
+
+  --color-sidebar-active-bg: #e8f0fe;
+  --color-sidebar-active-border: var(--color-primary);
+  --color-sidebar-footer-bg: #fafbfd;
+  --color-sidebar-icon-muted: #a4a8bc;
+  --color-sidebar-subtle-border: #eef2f8;
+  --color-sidebar-section-muted: #64748b;
+  --color-sidebar-profile-hover-bg: #e8ecf4;
+  --color-sidebar-profile-hover-text: #475569;
+
+  --color-table-header-bg: #fafbff;
+  --color-table-header-border: #dfe4f0;
+  --color-table-row-hover-bg: #eef2f8;
+  --color-table-row-hover-text: #475569;
+  --color-table-row-hover-tint: rgba(43, 80, 237, 0.045);
+  --color-table-avatar-bg: #eef2f8;
+  --color-table-avatar-text: #475569;
+
+  --color-role-admin: #b91c1c;
+  --color-role-admin-bg: #fef2f2;
+  --color-role-manager: #c2410c;
+  --color-role-manager-bg: #fff7ed;
+  --color-role-user: #1d4ed8;
+  --color-role-user-bg: #eff6ff;
+  --color-role-bar-admin: #ec4899;
+  --color-role-bar-manager: #eab308;
+  --color-role-bar-user: #38bdf8;
+  --color-role-track-bg: rgba(148, 163, 184, 0.18);
+
+  --color-stat-active: #15803d;
+  --color-stat-pending: #b45309;
+  --color-stat-inactive: #dc2626;
+  --color-directory-tabs-bg: #fafbff;
+  --color-badge-outline: #ffffff;
+
+  /* ── Gradients (runtime where noted) ─────────────────────────────── */
+  --gradient-avatar: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  --color-avatar-text: #ffffff;
+  --gradient-weather-night: linear-gradient(135deg, rgba(36, 79, 135, 0.14), rgba(36, 79, 135, 0.06));
+  --gradient-weather-cloud: linear-gradient(135deg, rgba(100, 116, 139, 0.16), rgba(100, 116, 139, 0.07));
+  --gradient-weather-rain: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(59, 130, 246, 0.06));
+  --gradient-weather-sun: linear-gradient(135deg, rgba(234, 179, 8, 0.18), rgba(234, 179, 8, 0.08));
+
+  --gradient-stat-total-g1: rgba(43, 80, 237, 0.14);
+  --gradient-stat-total-g2: rgba(43, 80, 237, 0.06);
+  --gradient-stat-active-g1: rgba(34, 197, 94, 0.18);
+  --gradient-stat-active-g2: rgba(34, 197, 94, 0.07);
+  --gradient-stat-pending-g1: rgba(234, 179, 8, 0.22);
+  --gradient-stat-pending-g2: rgba(234, 179, 8, 0.08);
+  --gradient-stat-inactive-g1: rgba(248, 113, 113, 0.16);
+  --gradient-stat-inactive-g2: rgba(248, 113, 113, 0.06);
+
+  --border-stat-total: rgba(43, 80, 237, 0.18);
+  --border-stat-active: rgba(34, 197, 94, 0.24);
+  --border-stat-pending: rgba(234, 179, 8, 0.3);
+  --border-stat-inactive: rgba(248, 113, 113, 0.22);
+
+  /* ── Shadows (runtime) ───────────────────────────────────────────── */
+  --shadow-card: 0 0 20px rgba(1, 41, 112, 0.08);
+  --shadow-card-hover: 0 8px 28px rgba(1, 41, 112, 0.12);
+  --shadow-navbar: rgba(255, 255, 255, 0.92) 0px 1px 0px inset, rgba(1, 41, 112, 0.06) 0px 4px 28px,
+    rgba(1, 41, 112, 0.035) 0px 2px 8px;
+  --shadow-logo: 0 2px 8px rgba(43, 80, 237, 0.28);
+  --shadow-weather: 0 6px 16px rgba(15, 23, 42, 0.08);
+  --shadow-sidebar-expand: 8px 0 28px rgba(1, 41, 112, 0.14);
+  --shadow-sidebar-footer: 0 -4px 16px rgba(1, 41, 112, 0.07), 0 -1px 0 rgba(1, 41, 112, 0.05);
+  --shadow-badge: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-avatar-ring: 0 0 0 2px var(--color-surface), 0 0 0 3px var(--color-primary-border), 0 4px 14px var(--color-primary-soft);
+
+  /* ── Spacing ─────────────────────────────────────────────────────── */
+  --spacing-0: 0;
+  --spacing-1: 2px;
+  --spacing-2: 4px;
+  --spacing-3: 6px;
+  --spacing-4: 8px;
+  --spacing-5: 10px;
+  --spacing-6: 12px;
+  --spacing-7: 14px;
+  --spacing-8: 16px;
+  --spacing-9: 18px;
+  --spacing-10: 22px;
+  --spacing-11: 24px;
+  --spacing-12: 28px;
+  --spacing-13: 40px;
+
+  /* ── Border radius ───────────────────────────────────────────────── */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-pill: 20px;
+  --radius-full: 999px;
+
+  /* ── Typography ──────────────────────────────────────────────────── */
+  --font-family-base: 'Public Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-mono: ui-monospace, Consolas, monospace;
+
+  --font-size-micro: 10px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-caption: 13px;
+  --font-size-body-sm: 14px;
+  --font-size-body: 15px;
+  --font-size-brand: 17px;
+  --font-size-icon-sm: 18px;
+  --font-size-icon: 20px;
+  --font-size-icon-lg: 26px;
+  --font-size-temp: 22px;
+  --font-size-page-title: clamp(1.625rem, 2.4vw, 1.875rem);
+
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  --line-height-tight: 1;
+  --line-height-snug: 1.15;
+  --line-height-base: 1.2;
+  --line-height-normal: 1.25;
+  --line-height-relaxed: 1.5;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.06em;
+  --letter-spacing-wider: 0.08em;
+  --letter-spacing-widest: 0.1em;
+
+  /* ── Layout ─────────────────────────────────────────────────────── */
+  --layout-sidebar-expanded: 260px;
+  --layout-sidebar-collapsed: 78px;
+  --layout-navbar-height: 74px;
+  --navbar-divider-height: 32px;
+  --navbar-icon-size: 18px;
+  --avatar-size-sm: 34px;
+  --avatar-size-md: 40px;
+  --avatar-size-lg: 42px;
+  --avatar-size-xl: 44px;
+  --layout-sidebar-current: var(--layout-sidebar-expanded);
+  --layout-content-max-width: 560px;
+  --layout-weather-min-width: 280px;
+  --layout-drawer-max-width: 86vw;
+
+  /* ── Z-index ─────────────────────────────────────────────────────── */
+  --z-index-sidebar: 1200;
+  --z-index-sidebar-expand: 1290;
+  --z-index-navbar: 1280;
+
+  /* ── Transitions ─────────────────────────────────────────────────── */
+  --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.2s ease;
+  --transition-input: 160ms ease;
+
+  /* ── Scrollbar ───────────────────────────────────────────────────── */
+  --scrollbar-size: 8px;
+  --color-scrollbar-thumb: #c5cce3;
+  --color-scrollbar-thumb-hover: #aab4d4;
+}
