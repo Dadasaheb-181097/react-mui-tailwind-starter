@@ -1,22 +1,22 @@
 ﻿/* â”€â”€ Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-.admin-shell {
+.app-shell {
   --layout-sidebar-current: var(--layout-sidebar-expanded);
 }
 
-.admin-shell--sidebar-collapsed {
+.app-shell--sidebar-collapsed {
   --layout-sidebar-current: var(--layout-sidebar-collapsed);
 }
 
-.admin-shell--mobile {
+.app-shell--mobile {
   --layout-sidebar-current: 0px;
 }
 
-.admin-main {
+.app-main {
   margin-left: var(--layout-sidebar-current);
 }
 
-.admin-main__inner > .breadcrumb {
+.app-main__inner > .breadcrumb {
   margin-bottom: var(--spacing-10);
 }
 

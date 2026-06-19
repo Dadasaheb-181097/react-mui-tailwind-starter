@@ -188,8 +188,8 @@
   --transition-fast: 0.2s ease;
   --transition-input: 160ms ease;
 
-  /* ── Scrollbar ───────────────────────────────────────────────────── */
-  --scrollbar-size: 8px;
-  --color-scrollbar-thumb: #c5cce3;
-  --color-scrollbar-thumb-hover: #aab4d4;
+  /* ── Scrollbar (NiceAdmin-style, auto-hide via .scrollbar-active) ─ */
+  --scrollbar-size: 5px;
+  --color-scrollbar-thumb: rgba(148, 163, 184, 0.42);
+  --color-scrollbar-thumb-hover: rgba(100, 116, 139, 0.68);
 }

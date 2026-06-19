@@ -1,14 +1,13 @@
 import { Provider } from 'react-redux'
-import { store } from '@/app/store'
-import { AuthProvider } from '@/features/auth/AuthContext'
-import { AdminAppearanceProvider } from '@/context/AdminAppearanceContext'
+import { store } from '@/store'
+import { AuthBootstrap } from '@/features/auth/components/AuthBootstrap'
+import { AppearanceShell } from '@/app/providers/AppearanceShell'
 
 export function AppProviders({ children }) {
   return (
     <Provider store={store}>
-      <AuthProvider>
-        <AdminAppearanceProvider>{children}</AdminAppearanceProvider>
-      </AuthProvider>
+      <AuthBootstrap />
+      <AppearanceShell>{children}</AppearanceShell>
     </Provider>
   )
 }

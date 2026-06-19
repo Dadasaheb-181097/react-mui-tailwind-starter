@@ -6,8 +6,8 @@ import {
 } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 import { UserAvatar } from '@/shared/components/ui/UserAvatar'
-import { useAuth } from '@/features/auth/AuthContext'
-import { ROUTE_PATHS } from '@/app/routes/routePaths'
+import { useAuth } from '@/store'
+import { ROUTE_PATHS } from '@/routes/paths'
 import { AppDrawer } from './AppDrawer'
 import { DrawerGhostButton, DrawerOutlineButton } from './DrawerButton'
 

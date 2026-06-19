@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ChevronRight, HomeOutlined } from '@mui/icons-material'
-import { useAppBreadcrumbs } from '@/shared/navigation'
+import { useAppBreadcrumbs } from './useAppBreadcrumbs'
 
 /**
  * Dynamic breadcrumb trail — auto-resolves from the current route, or pass `items` to override.
