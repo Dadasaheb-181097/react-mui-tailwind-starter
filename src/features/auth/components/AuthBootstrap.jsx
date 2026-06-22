@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { authHydrated } from '@/store/slices/authSlice'
+import { authHydrated } from '@/redux/slices/authSlice'
 
 const STORAGE_KEY = 'mui-starter-auth'
 

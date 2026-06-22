@@ -1,47 +1,75 @@
-import { useEffect, useState } from 'react'
-import { Link, useLoaderData, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import Stack from '@mui/material/Stack'
-import { ROUTE_PATHS } from '@/routes/paths'
-import { useUnsavedChanges } from '@/shared/context/UnsavedChangesContext'
+import { Link } from 'react-router-dom'
+import { FormProvider, FormSelect, FormTextField } from '@/forms'
+import { PageLoader } from '@/components/PageLoader'
+import { ROUTES } from '@/constants/routes'
+import { useUserDetailsQuery, useUnsavedChanges, useZodForm } from '@/hooks'
+import {
+  USER_ROLE_OPTIONS,
+  USER_STATUS_OPTIONS,
+  mapUserToFormValues,
+  userSchema,
+} from '@/validations/user.schema'
 
 export function UserEditPage() {
-  const { user } = useLoaderData()
+  const { userId } = useParams()
+  const { data: user, isLoading, isError } = useUserDetailsQuery(userId)
+
+  if (isLoading) return <PageLoader />
+  if (isError || !user) {
+    return <Typography color="error">User not found.</Typography>
+  }
+
+  return <UserEditForm user={user} />
+}
+
+function UserEditForm({ user }) {
   const navigate = useNavigate()
   const { setDirty } = useUnsavedChanges()
 
-  const [name, setName] = useState(user.name)
-  const [email, setEmail] = useState(user.email)
+  const methods = useZodForm({
+    schema: userSchema,
+    values: mapUserToFormValues(user),
+    mode: 'onTouched',
+  })
+
+  const { formState: { isDirty, isSubmitting } } = methods
 
   useEffect(() => {
-    const dirty = name !== user.name || email !== user.email
-    setDirty(dirty)
+    setDirty(isDirty)
     return () => setDirty(false)
-  }, [name, email, user.name, user.email, setDirty])
-
-  const handleSave = () => {
-    setDirty(false)
-    navigate(ROUTE_PATHS.users.detail(user.id))
-  }
+  }, [isDirty, setDirty])
 
   return (
     <Box>
       <Typography variant="h4" fontWeight={800} gutterBottom>
         Edit User
       </Typography>
-      <Stack spacing={2} sx={{ maxWidth: 420, mb: 3 }}>
-        <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
-        <TextField label="Email" value={email} onChange={(e) => setEmail(e.target.value)} fullWidth />
-      </Stack>
-      <Button onClick={handleSave} variant="contained" sx={{ mr: 1 }}>
-        Save
-      </Button>
-      <Button component={Link} to={ROUTE_PATHS.users.detail(user.id)} variant="outlined">
-        Cancel
-      </Button>
+      <FormProvider
+        methods={methods}
+        onSubmit={() => {
+          setDirty(false)
+          navigate(ROUTES.USER_DETAILS(user.id))
+        }}
+      >
+        <Stack spacing={2} sx={{ maxWidth: 420, mb: 3 }}>
+          <FormTextField name="name" label="Name" />
+          <FormTextField name="email" label="Email" type="email" />
+          <FormSelect name="role" label="Role" options={USER_ROLE_OPTIONS} />
+          <FormSelect name="status" label="Status" options={USER_STATUS_OPTIONS} />
+        </Stack>
+        <Button type="submit" variant="contained" sx={{ mr: 1 }} disabled={isSubmitting}>
+          Save
+        </Button>
+        <Button component={Link} to={ROUTES.USER_DETAILS(user.id)} variant="outlined">
+          Cancel
+        </Button>
+      </FormProvider>
     </Box>
   )
 }

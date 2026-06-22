@@ -1,4 +1,4 @@
-import { AppBreadcrumbs } from '@/shared/components/navigation'
+import { AppBreadcrumbs } from '@/components/navigation'
 
 export function Main({ children }) {
   return (

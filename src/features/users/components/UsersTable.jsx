@@ -30,8 +30,8 @@ import Tabs from '@mui/material/Tabs'
 import TextField from '@mui/material/TextField'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import { ROUTE_PATHS } from '@/routes/paths'
-import { UserAvatar } from '@/shared/components/ui/UserAvatar'
+import { ROUTES } from '@/constants/routes'
+import { UserAvatar } from '@/components/ui/UserAvatar'
 
 const ROWS_PER_PAGE = 8
 
@@ -162,7 +162,7 @@ function ActionButtons({ user, mode }) {
         <Tooltip title="View">
           <IconButton
             component={Link}
-            to={ROUTE_PATHS.users.detail(user.id)}
+            to={ROUTES.USER_DETAILS(user.id)}
             size="small"
             sx={{ borderRadius: 1.5, color: 'text.secondary' }}
           >
@@ -174,7 +174,7 @@ function ActionButtons({ user, mode }) {
         <Tooltip title="Edit">
           <IconButton
             component={Link}
-            to={ROUTE_PATHS.users.editDetail(user.id)}
+            to={ROUTES.USER_EDIT(user.id)}
             size="small"
             sx={{ borderRadius: 1.5, color: 'text.secondary' }}
           >

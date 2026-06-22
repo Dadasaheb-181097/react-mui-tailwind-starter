@@ -7,7 +7,7 @@ import {
   DarkModeOutlined as DarkModeOutlinedIcon,
   LightModeOutlined as LightModeOutlinedIcon,
 } from '@mui/icons-material'
-import { useAdminAppearance } from '@/store'
+import { useAdminAppearance } from '@/hooks'
 
 export function ThemePickerPanel({ dense = false }) {
   const { mode, presetId, presets, setMode, setPresetId } = useAdminAppearance()

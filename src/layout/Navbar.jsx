@@ -13,7 +13,7 @@ import {
   LogoutOutlined as LogoutOutlinedIcon,
 } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
-import { UserAvatar } from '@/shared/components/ui/UserAvatar'
+import { UserAvatar } from '@/components/ui/UserAvatar'
 import {
   NAV_DIVIDER,
   NAV_ICON_BTN,
@@ -21,8 +21,9 @@ import {
   NAV_PROFILE_BTN,
   NAV_PROFILE_NAME,
   NAV_PROFILE_ROLE,
-} from '@/shared/constants/uiClasses'
-import { useAdminAppearance, useAuth } from '@/store'
+} from '@/constants/uiClasses'
+import { ROUTES } from '@/constants/routes'
+import { useAdminAppearance, useAuth } from '@/hooks'
 import { ThemePalettePopover } from '@/components/ThemePalettePopover'
 import { WeatherDateTime } from '@/components/WeatherDateTime'
 
@@ -59,7 +60,7 @@ export function Navbar({ onMenuClick, onOpenChat, onOpenNotifications, onOpenPro
 
   const handleLogout = () => {
     logout()
-    navigate('/login', { replace: true })
+    navigate(ROUTES.LOGIN, { replace: true })
   }
 
   return (

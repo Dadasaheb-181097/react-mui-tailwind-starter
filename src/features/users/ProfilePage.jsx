@@ -9,51 +9,51 @@ import {
   SettingsOutlined as SettingsOutlinedIcon,
   ShieldOutlined as ShieldOutlinedIcon,
 } from '@mui/icons-material'
-import { UserAvatar } from '@/shared/components/ui/UserAvatar'
-import { useAuth } from '@/store'
-import { ROUTE_PATHS } from '@/routes/paths'
+import { ROUTES } from '@/constants/routes'
+import { UserAvatar } from '@/components/ui/UserAvatar'
+import { useAuth } from '@/hooks'
 
 const PROFILE_OPTIONS = [
   {
     id: 'personal',
     title: 'Personal information',
     description: 'Update your name, contact details, and profile photo.',
-    to: ROUTE_PATHS.users.settings,
+    to: ROUTES.USERS_SETTINGS,
     Icon: PersonOutlineIcon,
   },
   {
     id: 'account',
     title: 'Account settings',
     description: 'Manage language, timezone, and workspace preferences.',
-    to: ROUTE_PATHS.users.settings,
+    to: ROUTES.USERS_SETTINGS,
     Icon: SettingsOutlinedIcon,
   },
   {
     id: 'security',
     title: 'Security & password',
     description: 'Change password, enable 2FA, and review active sessions.',
-    to: ROUTE_PATHS.users.settings,
+    to: ROUTES.USERS_SETTINGS,
     Icon: LockOutlinedIcon,
   },
   {
     id: 'notifications',
     title: 'Notifications',
     description: 'Choose how you receive email, push, and in-app alerts.',
-    to: ROUTE_PATHS.users.settings,
+    to: ROUTES.USERS_SETTINGS,
     Icon: NotificationsOutlinedIcon,
   },
   {
     id: 'roles',
     title: 'Roles & permissions',
     description: 'View your assigned role and access level in the workspace.',
-    to: ROUTE_PATHS.settings.roles,
+    to: ROUTES.SETTINGS_ROLES,
     Icon: ShieldOutlinedIcon,
   },
   {
     id: 'activity',
     title: 'Activity log',
     description: 'Review recent sign-ins and account activity history.',
-    to: ROUTE_PATHS.users.settings,
+    to: ROUTES.USERS_SETTINGS,
     Icon: BadgeOutlinedIcon,
   },
 ]
@@ -117,7 +117,7 @@ export function ProfilePage() {
             </span>
           </div>
           <Link
-            to={ROUTE_PATHS.users.settings}
+            to={ROUTES.USERS_SETTINGS}
             className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-primary-border bg-surface px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary-soft"
           >
             Edit profile

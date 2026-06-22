@@ -17,8 +17,8 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
-import { NAV_ICON_BTN } from '@/shared/constants/uiClasses'
-import { UserAvatar } from '@/shared/components/ui/UserAvatar'
+import { NAV_ICON_BTN } from '@/constants/uiClasses'
+import { UserAvatar } from '@/components/ui/UserAvatar'
 import { CHAT_CONTACTS, getMessagesForContact } from './data/chatData'
 
 const searchFieldSx = {

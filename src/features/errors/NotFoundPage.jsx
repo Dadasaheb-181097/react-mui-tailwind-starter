@@ -4,7 +4,8 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { ROUTE_PATHS } from '@/routes/paths'
+
+import { ROUTES } from '@/constants/routes'
 
 export function NotFoundPage({ standalone = false }) {
   const navigate = useNavigate()
@@ -48,7 +49,7 @@ export function NotFoundPage({ standalone = false }) {
         The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
       </Typography>
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
-        <Button component={Link} to={ROUTE_PATHS.root} variant="contained" sx={{ textTransform: 'none', fontWeight: 600 }}>
+        <Button component={Link} to={ROUTES.HOME} variant="contained" sx={{ textTransform: 'none', fontWeight: 600 }}>
           Back to dashboard
         </Button>
         <Button variant="outlined" onClick={() => navigate(-1)} sx={{ textTransform: 'none', fontWeight: 600 }}>

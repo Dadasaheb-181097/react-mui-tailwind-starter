@@ -11,10 +11,10 @@ import {
   SettingsOutlined as SettingsOutlinedIcon,
   LogoutOutlined as LogoutOutlinedIcon,
 } from '@mui/icons-material'
-import { UserAvatar } from '@/shared/components/ui/UserAvatar'
-import { ROUTE_PATHS } from '@/routes/paths'
-import { SIDEBAR_CHEVRON, SIDEBAR_FOOTER_BAR, SIDEBAR_FOOTER_ICON } from '@/shared/constants/uiClasses'
-import { useAuth } from '@/store'
+import { UserAvatar } from '@/components/ui/UserAvatar'
+import { ROUTES } from '@/constants/routes'
+import { SIDEBAR_CHEVRON, SIDEBAR_FOOTER_BAR, SIDEBAR_FOOTER_ICON } from '@/constants/uiClasses'
+import { useAuth } from '@/hooks'
 import { PRIMARY_NAV, PRODUCTIVITY_NAV, RAIL_NAV } from './navConfig'
 
 const HOVER_EXPAND_LEAVE_MS = 200
@@ -153,7 +153,7 @@ function SidebarFooter({ user, showLabels, railCollapsed, isMobile, onOpenProfil
                 size="small"
                 className={SIDEBAR_FOOTER_ICON}
                 aria-label="Settings"
-                onClick={() => navigate(ROUTE_PATHS.users.settings)}
+                onClick={() => navigate(ROUTES.USERS_SETTINGS)}
               >
                 <SettingsOutlinedIcon fontSize="small" />
               </IconButton>
